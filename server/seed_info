@@ -1,0 +1,44 @@
+-- Names
+CREATE TABLE IF NOT EXISTS names (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+)
+ 
+-- Recipes
+CREATE TABLE IF NOT EXISTS recipes (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  ingredients TEXT NOT NULL,
+instructions TEXT NOT NULL,
+  category_id INTEGER REFERENCES names(id)
+)
+ 
+-- Genres
+CREATE TABLE IF NOT EXISTS genres (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+)
+ 
+-- Recipe_Genre Junction table
+CREATE TABLE IF NOT EXISTS recipe_genre(
+  recipe_id INTEGER REFERENCES recipe(id),
+ genre_id INTEGER REFERENCES categories(id),
+  PRIMARY KEY (recipe_id, genre_id)
+)
+INSERT INTO names(name) VALUES('Fee');
+INSERT INTO names(name) VALUES('Jonty');
+INSERT INTO names(name) VALUES('Abbie');
+INSERT INTO recipes (title, ingredients, instructions, category_id)
+VALUES ('Shepherd''s Pie', '1 tbsp olive oil, 1 onion, chopped, 2 carrots, chopped, 2 celery sticks, chopped, 500g/1lb 2oz minced lamb, 2 tbsp plain flour, 400ml/14fl oz lamb or beef stock, 2 tbsp tomato purée, 1 tbsp Worcestershire sauce, A few sprigs of fresh thyme, leaves only, 450g/1lb potatoes, peeled and chopped, 50g/1¾oz butter, 50ml/2fl oz milk, Salt and freshly ground black pepper', '1. Preheat the oven to 200C/180C Fan/Gas 6. 2. Heat the oil in a large pan over a medium heat. Add the onion, carrots and celery, and cook for 5 minutes, or until softened. 3. Add the lamb and cook for 5-10 minutes, or until browned. 4. Stir in the flour and cook for 1 minute. 5. Gradually stir in the stock, tomato purée, Worcestershire sauce and thyme. 6. Bring to a simmer and cook for 10 minutes, or until thickened. 7. Season to taste with salt and pepper. 8. Meanwhile, cook the potatoes in a large pan of boiling salted water for 15-20 minutes, or until tender. 9. Drain and mash with the butter and milk. 10. Spoon the lamb mixture into an ovenproof dish. 11. Top with the mashed potato and bake for 20-25 minutes, or until golden brown.', 1);
+INSERT INTO recipes (title, ingredients, instructions, category_id)
+VALUES ('Fish Pie', '500g/1lb 2oz mixed white fish fillets, such as cod, haddock and salmon, skinned and boned, 250ml/9fl oz milk, 1 bay leaf, 50g/1¾oz butter, 50g/1¾oz plain flour, 300ml/10½fl oz fish stock, 100ml/3½fl oz double cream, 150g/5½oz cooked peeled prawns, 100g/3½oz frozen peas, 3 tbsp chopped fresh parsley, 350g/12oz potatoes, peeled and thinly sliced, 50g/1¾oz grated Cheddar cheese, Salt and freshly ground black pepper', '1. Preheat the oven to 200C/180C Fan/Gas 6. 2. Poach the fish in the milk with the bay leaf for 4-5 minutes, or until just cooked through. 3. Drain the fish, reserving the milk. 4. Flake the fish into a large bowl. 5. Melt the butter in a saucepan over a medium heat. 6. Stir in the flour and cook for 1 minute. 7. Gradually stir in the reserved milk, fish stock and cream. 8. Bring to a simmer and cook for 5 minutes, or until thickened. 9. Stir in the prawns, peas and parsley. 10. Season to taste with salt and pepper. 11. Pour the sauce over the fish and mix well. 12. Arrange the potatoes over the top of the fish mixture. 13. Sprinkle with the cheese. 14. Bake for 25-30 minutes, or until the potatoes are tender and golden brown.', 2);
+INSERT INTO recipes (title, ingredients, instructions, category_id)
+VALUES ('Chocolate Chip Cookies', '150g/5½oz softened butter, 150g/5½oz caster sugar, 1 large egg, 1 tsp vanilla extract, 250g/9oz plain flour, 1 tsp baking powder, 150g/5½oz chocolate chips', '1. Preheat the oven to 180C/160C Fan/Gas 4. 2. Cream together the butter and sugar until light and fluffy. 3. Beat in the egg and vanilla extract. 4. Sift in the flour and baking powder and stir until just combined. 5. Stir in the chocolate chips. 6. Drop tablespoons of the dough onto baking trays lined with baking parchment, leaving space between them. 7. Bake for 12-15 minutes, or until golden brown and just set around the edges. 8. Allow to cool on the trays for a few minutes before transferring to a wire rack to cool completely.', 3);
+
+
+INSERT INTO genre (name) VALUES('Savoury');
+INSERT INTO genre (name) VALUES('Sweet');
+ 
+INSERT INTO recipe_genre (recipe_id, genre_id) VALUES(1, 1);
+INSERT INTO recipe_genre (recipe_id, genre_id) VALUES(2, 2);
+INSERT INTO recipe_genre (recipe_id, genre_id) VALUES(3, 3);
