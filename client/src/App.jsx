@@ -3,6 +3,7 @@ import RecipePage from "../Pages/RecipePage";
 import GFPage from "../Pages/GFPage";
 import InsertRecipes from "../Pages/InsertRecipes";
 import Home from "../Pages/Home";
+//import DisplayRecipe from "../Pages/DisplayRecipe";
 import React from "react";
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
           Find a recipe
         </Link>
         <Link className="navlink our_recipes" to="/recipes">
-          Add a recipe
+          Our Recipes
         </Link>
 
         <Routes>

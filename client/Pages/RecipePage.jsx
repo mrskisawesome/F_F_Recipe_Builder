@@ -12,13 +12,24 @@ export default function RecipePage() {
 
     setFamilyRecipes(data);
   }
+
   return (
     <>
       <div>
         <h2>Our Collected Recipes</h2>
         <ul>
           {familyRecipes.map((recipe) => {
-            return <li key={recipe.id + recipe.name}>{recipe.title}</li>;
+            return (
+              <>
+                <li key={recipe.id + recipe.name}>
+                  <p>{recipe.name}</p>
+                  <p>{recipe.title}</p>
+                  <p>{recipe.ingredients}</p>
+                  <p>{recipe.instructions}</p>
+                  <p>{recipe.genres && recipe.genres[0].name}</p>
+                </li>
+              </>
+            );
           })}
         </ul>
       </div>
