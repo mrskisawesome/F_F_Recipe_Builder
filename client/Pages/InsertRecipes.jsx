@@ -26,13 +26,16 @@ export default function InsertRecipes() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/recipes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://family-recipe-builder-server.onrender.com/recipes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const json = await response.json();
       console.log("Response from server:", json);
